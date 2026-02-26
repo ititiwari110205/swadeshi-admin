@@ -17,6 +17,7 @@ const ProtectedRoute = () => {
   return <Outlet />;
 };
 
+
 export default function App() {
   return (
     <Routes>
