@@ -12,10 +12,10 @@ export default function Orders() {
     return (
         <div className="fade-in">
             <div className="flex justify-between items-center" style={{ marginBottom: '20px' }}>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: '600' }}>Apparel Order Fulfillment</h2>
+                <h2 style={{ fontSize: '1.25rem', fontWeight: '600', margin: 0 }} className="sm:text-2xl">Apparel Order Fulfillment</h2>
             </div>
 
-            <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+            <div className="admin-table-container">
                 <table className="admin-table">
                     <thead>
                         <tr>

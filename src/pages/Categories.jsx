@@ -31,8 +31,8 @@ export default function Categories() {
 
     return (
         <div className="fade-in">
-            <div className="flex justify-between items-center" style={{ marginBottom: '20px' }}>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: '600' }}>Apparel Categories</h2>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4" style={{ marginBottom: '20px' }}>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: '600', margin: 0 }}>Apparel Categories</h2>
                 <button
                     className="btn btn-primary"
                     onClick={() => {
@@ -50,16 +50,16 @@ export default function Categories() {
                         <h3 style={{ fontSize: '1.2rem', fontWeight: '600' }}>{currentCat.id ? 'Modify Category' : 'Create Category'}</h3>
                         <button onClick={() => setIsEditing(false)} style={{ padding: '5px', borderRadius: '50%', backgroundColor: 'var(--color-bg)' }}><X size={20} /></button>
                     </div>
-                    <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
-                        <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                    <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="form-group col-span-1 md:col-span-2">
                             <label className="form-label">Category Title</label>
                             <input type="text" className="form-input" required value={currentCat.name} onChange={e => setCurrentCat({ ...currentCat, name: e.target.value })} placeholder="e.g. Sherwani, Nehru Jacket" />
                         </div>
-                        <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                        <div className="form-group col-span-1 md:col-span-2">
                             <label className="form-label">Classification Description</label>
                             <textarea className="form-input" required rows="3" value={currentCat.description} onChange={e => setCurrentCat({ ...currentCat, description: e.target.value })} placeholder="Brief context..."></textarea>
                         </div>
-                        <div style={{ gridColumn: 'span 2', display: 'flex', justifyContent: 'flex-end', gap: '15px' }}>
+                        <div className="col-span-1 md:col-span-2 flex flex-col sm:flex-row justify-end gap-4">
                             <button type="button" className="btn btn-outline" onClick={() => setIsEditing(false)}>Cancel Edit</button>
                             <button type="submit" className="btn btn-primary"><Check size={18} style={{ marginRight: '8px' }} /> Save Registration</button>
                         </div>
@@ -67,7 +67,7 @@ export default function Categories() {
                 </div>
             )}
 
-            <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+            <div className="admin-table-container">
                 <table className="admin-table">
                     <thead>
                         <tr>

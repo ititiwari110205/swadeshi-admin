@@ -17,12 +17,12 @@ export default function SliderManagement() {
 
     return (
         <div className="fade-in">
-            <div className="flex justify-between items-center" style={{ marginBottom: '30px' }}>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6" style={{ marginBottom: '30px' }}>
                 <div>
-                    <h2 style={{ fontSize: '1.8rem', marginBottom: '5px' }}>Slider Management</h2>
-                    <p style={{ color: 'var(--color-text-muted)' }}>Curate the homepage hero banner showcase</p>
+                    <h2 style={{ fontSize: '1.5rem', marginBottom: '5px', margin: 0 }} className="sm:text-3xl">Slider Management</h2>
+                    <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Curate the homepage hero banner showcase</p>
                 </div>
-                <button className="btn btn-primary" onClick={() => setIsAdding(!isAdding)}>
+                <button className="btn btn-primary w-full sm:w-auto" onClick={() => setIsAdding(!isAdding)}>
                     {isAdding ? 'Cancel' : <><Plus size={18} style={{ marginRight: '8px' }} /> Add New Slide</>}
                 </button>
             </div>
@@ -30,7 +30,7 @@ export default function SliderManagement() {
             {isAdding && (
                 <div className="card fade-in" style={{ marginBottom: '30px', borderLeft: '4px solid var(--color-secondary)' }}>
                     <h3 style={{ marginBottom: '20px', fontSize: '1.2rem' }}>Create New Slide</h3>
-                    <form onSubmit={handleAdd} className="grid grid-cols-2 gap-6">
+                    <form onSubmit={handleAdd} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         <div className="form-group">
                             <label className="form-label">Slide Title</label>
                             <input
@@ -52,7 +52,7 @@ export default function SliderManagement() {
                                 onChange={(e) => setNewSlider({ ...newSlider, subtitle: e.target.value })}
                             />
                         </div>
-                        <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                        <div className="form-group col-span-1 md:col-span-2">
                             <label className="form-label">Image URL</label>
                             <div className="flex items-center gap-4">
                                 <input
@@ -68,16 +68,16 @@ export default function SliderManagement() {
                                 </button>
                             </div>
                         </div>
-                        <div style={{ gridColumn: 'span 2', display: 'flex', justifyContent: 'flex-end' }}>
+                        <div className="col-span-1 md:col-span-2 flex justify-end">
                             <button type="submit" className="btn btn-primary">Save Slide</button>
                         </div>
                     </form>
                 </div>
             )}
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {sliders.length === 0 ? (
-                    <div className="card" style={{ gridColumn: 'span 2', textAlign: 'center', padding: '50px 20px' }}>
+                    <div className="card col-span-1 md:col-span-2" style={{ textAlign: 'center', padding: '50px 20px' }}>
                         <ImageIcon size={48} color="var(--color-text-light)" style={{ margin: '0 auto 15px' }} />
                         <h3 style={{ fontSize: '1.2rem', marginBottom: '10px' }}>No Slides Found</h3>
                         <p style={{ color: 'var(--color-text-muted)' }}>Add your first slide to showcase on the homepage.</p>

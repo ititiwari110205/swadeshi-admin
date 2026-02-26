@@ -14,7 +14,7 @@ export default function Dashboard() {
     return (
         <div className="fade-in">
             {/* KPI Cards */}
-            <div className="grid grid-cols-4 gap-6" style={{ marginBottom: '40px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" style={{ marginBottom: '30px' }}>
                 <div className="card hover-lift" style={{ ...styles.kpiCard, borderTop: '4px solid var(--color-primary)' }}>
                     <div className="flex justify-between items-center" style={{ marginBottom: '15px' }}>
                         <div style={{ ...styles.iconBox, backgroundColor: 'rgba(92, 21, 21, 0.08)' }}>
@@ -69,11 +69,11 @@ export default function Dashboard() {
                 </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Recent Orders Table */}
-                <div className="card" style={{ gridColumn: 'span 2', padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+                <div className="card col-span-1 lg:col-span-2" style={{ padding: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                     <div className="flex justify-between items-center" style={{ padding: '24px 32px', borderBottom: '1px solid var(--color-border)', backgroundColor: 'var(--color-bg)' }}>
-                        <h3 style={{ fontSize: '1.2rem', fontWeight: '600', mragin: 0, display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <h3 style={{ fontSize: '1.1rem', fontWeight: '600', margin: 0, display: 'flex', alignItems: 'center', gap: '10px' }}>
                             <ShoppingCart size={20} color="var(--color-primary)" /> Latest Transactions
                         </h3>
                         <button className="btn btn-outline" style={{ padding: '8px 16px', fontSize: '0.75rem' }}>View All</button>

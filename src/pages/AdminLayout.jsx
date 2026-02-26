@@ -31,7 +31,7 @@ export default function AdminLayout() {
     return (
         <div style={styles.layout}>
             {/* Sidebar - Desktop */}
-            <aside style={styles.sidebar} className="admin-sidebar hidden md:flex">
+            <aside style={styles.sidebar} className="admin-sidebar hidden lg:flex">
                 <div style={styles.logoContainer}>
                     <div className="flex items-center gap-3">
                         <Scissors size={28} color="var(--color-secondary)" />
@@ -85,30 +85,30 @@ export default function AdminLayout() {
             </aside>
 
             {/* Main Content */}
-            <main style={styles.main}>
+            <main style={styles.main} className="admin-main">
                 {/* Topbar */}
-                <header style={styles.topbar}>
+                <header style={styles.topbar} className="topbar-container">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                        <button className="md:hidden" onClick={() => setIsMobileMenuOpen(true)} style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '5px' }}>
+                        <button className="lg:hidden" onClick={() => setIsMobileMenuOpen(true)} style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: '5px' }}>
                             <Menu size={24} color="var(--color-primary-dark)" />
                         </button>
                         <div>
-                            <h1 style={{ fontSize: '1.4rem', fontWeight: 'bold', color: 'var(--color-primary-dark)', fontFamily: 'Playfair Display, serif' }}>{currentRouteName}</h1>
-                            <p style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', marginTop: '2px' }}>Manage your premium ethnic wear collection</p>
+                            <h1 style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--color-primary-dark)', fontFamily: 'Playfair Display, serif' }} className="sm:text-xl">{currentRouteName}</h1>
+                            <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '2px' }} className="hidden sm:block">Manage your premium ethnic wear collection</p>
                         </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '25px' }}>
-                        <div style={styles.searchBar} className="hidden md:flex">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }} className="sm:gap-6">
+                        <div style={styles.searchBar} className="hidden lg:flex">
                             <Search size={18} color="var(--color-text-muted)" />
                             <input type="text" placeholder="Search orders, products..." style={styles.searchInput} />
                         </div>
-                        <div style={{ position: 'relative', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', backgroundColor: 'var(--color-bg)', border: '1px solid var(--color-border)' }} className="hover-lift">
-                            <Bell size={18} color="var(--color-primary-dark)" />
-                            <span style={{ position: 'absolute', top: '-2px', right: '-2px', backgroundColor: 'var(--color-error)', color: 'white', fontSize: '0.65rem', fontWeight: 'bold', width: '18px', height: '18px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>3</span>
+                        <div style={{ position: 'relative', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--color-bg)', border: '1px solid var(--color-border)' }} className="hover-lift">
+                            <Bell size={16} color="var(--color-primary-dark)" />
+                            <span style={{ position: 'absolute', top: '-1px', right: '-1px', backgroundColor: 'var(--color-error)', color: 'white', fontSize: '0.6rem', fontWeight: 'bold', width: '16px', height: '16px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>3</span>
                         </div>
-                        <div className="flex items-center gap-2" style={{ padding: '8px 16px', backgroundColor: 'rgba(30, 96, 56, 0.05)', borderRadius: 'var(--radius-full)', border: '1px solid rgba(30, 96, 56, 0.1)' }}>
-                            <span style={{ width: '8px', height: '8px', backgroundColor: 'var(--color-success)', borderRadius: '50%', display: 'inline-block', boxShadow: '0 0 8px rgba(30, 96, 56, 0.5)' }}></span>
-                            <span style={{ fontSize: '0.8rem', fontWeight: '600', color: 'var(--color-success)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>System Live</span>
+                        <div className="hidden sm:flex items-center gap-2" style={{ padding: '6px 14px', backgroundColor: 'rgba(30, 96, 56, 0.05)', borderRadius: '999px', border: '1px solid rgba(30, 96, 56, 0.1)' }}>
+                            <span style={{ width: '6px', height: '6px', backgroundColor: 'var(--color-success)', borderRadius: '50%', display: 'inline-block' }}></span>
+                            <span style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--color-success)', textTransform: 'uppercase' }}>Live</span>
                         </div>
                     </div>
                 </header>
@@ -116,7 +116,7 @@ export default function AdminLayout() {
                 <div className="top-accent-line"></div>
 
                 {/* Content Area */}
-                <div style={styles.content}>
+                <div style={styles.content} className="content-area">
                     <Outlet />
                 </div>
             </main>
@@ -269,7 +269,6 @@ const styles = {
     },
     main: {
         flex: 1,
-        marginLeft: '280px',
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
@@ -315,37 +314,3 @@ const styles = {
         overflowY: 'auto'
     }
 };
-
-if (typeof document !== 'undefined') {
-    const style = document.createElement('style');
-    style.innerHTML = `
-    .admin-sidebar { display: flex !important; }
-    @media (max-width: 1024px) {
-      .admin-sidebar { display: none !important; }
-      main { margin-left: 0 !important; }
-      .md\\:hidden { display: block !important; }
-    }
-    @media (min-width: 1025px) {
-      .md\\:hidden { display: none !important; }
-    }
-    @keyframes slideRight {
-      from { transform: translateX(-100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-    .nav-link:hover {
-      background-color: rgba(255,255,255,0.05);
-      color: white !important;
-      transform: translateX(4px);
-    }
-    .nav-link.active {
-      background: linear-gradient(90deg, rgba(197, 160, 89, 0.15) 0%, transparent 100%);
-      color: var(--color-secondary-light) !important;
-      border-left: 3px solid var(--color-secondary);
-      font-weight: 600 !important;
-    }
-    .admin-sidebar button:hover, .admin-sidebar a:hover {
-      filter: brightness(1.2);
-    }
-  `;
-    document.head.appendChild(style);
-}

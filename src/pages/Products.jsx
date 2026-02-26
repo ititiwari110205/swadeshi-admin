@@ -41,8 +41,8 @@ export default function Products() {
 
     return (
         <div className="fade-in">
-            <div className="flex justify-between items-center" style={{ marginBottom: '20px' }}>
-                <h2 style={{ fontSize: '1.5rem', fontWeight: '600' }}>Product Inventory</h2>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4" style={{ marginBottom: '20px' }}>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: '600', margin: 0 }}>Product Inventory</h2>
                 <button
                     className="btn btn-primary"
                     onClick={() => {
@@ -60,7 +60,7 @@ export default function Products() {
                         <h3 style={{ fontSize: '1.2rem', fontWeight: '600' }}>{currentProd.id ? 'Edit Product Item' : 'Publish New Product'}</h3>
                         <button onClick={() => setIsEditing(false)} style={{ padding: '5px', backgroundColor: 'var(--color-bg)', borderRadius: '50%' }}><X size={20} /></button>
                     </div>
-                    <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-6">
+                    <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
 
                         <div className="form-group">
                             <label className="form-label">Product Name</label>
@@ -85,29 +85,29 @@ export default function Products() {
                             <input type="number" className="form-input" required value={currentProd.stock} onChange={e => setCurrentProd({ ...currentProd, stock: e.target.value })} />
                         </div>
 
-                        <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                        <div className="form-group col-span-1 md:col-span-2">
                             <label className="form-label">Media Asset URL (Image)</label>
                             <input type="text" className="form-input" required value={currentProd.image} onChange={e => setCurrentProd({ ...currentProd, image: e.target.value })} />
                         </div>
 
-                        <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                        <div className="form-group col-span-1 md:col-span-2">
                             <label className="form-label">Key Features</label>
                             <input type="text" className="form-input" required value={currentProd.features} onChange={e => setCurrentProd({ ...currentProd, features: e.target.value })} placeholder="Comma separated, e.g. Silk Blend, Dry Clean" />
                         </div>
 
-                        <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                        <div className="form-group col-span-1 md:col-span-2">
                             <label className="form-label">Detailed Description</label>
                             <textarea className="form-input" required rows="3" value={currentProd.description} onChange={e => setCurrentProd({ ...currentProd, description: e.target.value })}></textarea>
                         </div>
 
-                        <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                        <div className="form-group col-span-1 md:col-span-2">
                             <label className="flex items-center gap-2" style={{ cursor: 'pointer', display: 'inline-flex', padding: '10px', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-sm)' }}>
                                 <input type="checkbox" checked={currentProd.featured} onChange={e => setCurrentProd({ ...currentProd, featured: e.target.checked })} style={{ width: '20px', height: '20px', accentColor: 'var(--color-primary)' }} />
                                 <span style={{ fontWeight: '500' }}>Highlight this product on the main homepage</span>
                             </label>
                         </div>
 
-                        <div style={{ gridColumn: 'span 2', display: 'flex', justifyContent: 'flex-end', gap: '15px', marginTop: '10px' }}>
+                        <div className="col-span-1 md:col-span-2 flex flex-col sm:flex-row justify-end gap-4" style={{ marginTop: '10px' }}>
                             <button type="button" className="btn btn-outline" onClick={() => setIsEditing(false)}>Cancel Edit</button>
                             <button type="submit" className="btn btn-primary">{currentProd.id ? 'Save Updates' : 'Add to Catalog'}</button>
                         </div>
@@ -115,7 +115,7 @@ export default function Products() {
                 </div>
             )}
 
-            <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+            <div className="admin-table-container">
                 <table className="admin-table">
                     <thead>
                         <tr>
